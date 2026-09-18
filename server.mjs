@@ -1,0 +1,4 @@
+import http from 'node:http';
+import {readFile} from 'node:fs/promises';
+const allowed=new Map([['/','index.html'],...['index.html','app.js','calendar.js','style.css','favicon.svg'].map(x=>['/'+x,x])]);
+http.createServer(async(req,res)=>{const file=allowed.get(new URL(req.url,'http://localhost').pathname);if(!file){res.writeHead(404);res.end();return;}try{const body=await readFile(new URL(file,import.meta.url));res.setHeader('Content-Type',file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':'text/html; charset=utf-8');res.setHeader('Cache-Control','no-store');res.end(body);}catch{res.writeHead(500);res.end();}}).listen(4173,'127.0.0.1',()=>console.log('http://127.0.0.1:4173'));

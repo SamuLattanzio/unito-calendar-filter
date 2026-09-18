@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-18",
+  "publicBundle": "https://unito.prod.up.cineca.it/app/minify/4183d358.up.js",
+  "bundleSha256": "973d61b03d90d93acc80fd960c54f41c1729bb94ccb3f6205851d36949b71e7e",
+  "headers": {
+    "events": [
+      "HTTP/2 200 ",
+      "date: Fri, 18 Sep 2026 20:49:48 GMT",
+      "content-type: application/json; charset=utf-8",
+      "access-control-allow-origin: *",
+      "vary: Origin,Accept-Encoding",
+      "access-control-allow-credentials: true"
+    ],
+    "metadata": [
+      "HTTP/2 500 ",
+      "date: Fri, 18 Sep 2026 20:48:48 GMT",
+      "content-type: application/json; charset=utf-8",
+      "access-control-allow-origin: https://example.github.io",
+      "vary: Origin,Accept-Encoding",
+      "access-control-allow-credentials: true"
+    ]
+  },
+  "week": "2025-10-06",
+  "eventCount": 38,
+  "uniqueNames": 18
+}

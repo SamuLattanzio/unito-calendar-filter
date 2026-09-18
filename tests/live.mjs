@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {ENDPOINT,payload,normalize,subjects,time} from '../calendar.js';
+const origin=process.env.TEST_ORIGIN||'https://example.github.io';
+const day=process.env.TEST_WEEK||'2025-10-06';
+const preflight=await fetch(ENDPOINT,{method:'OPTIONS',headers:{Origin:origin,'Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'content-type'},signal:AbortSignal.timeout(30000)});
+assert.ok(preflight.ok);assert.ok([origin,'*'].includes(preflight.headers.get('access-control-allow-origin')));assert.match(preflight.headers.get('access-control-allow-methods'),/POST/);assert.match(preflight.headers.get('access-control-allow-headers'),/content-type/i);
+const response=await fetch(ENDPOINT,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify(payload(day)),signal:AbortSignal.timeout(30000)});
+assert.equal(response.status,200);assert.ok([origin,'*'].includes(response.headers.get('access-control-allow-origin')));
+const events=normalize(await response.json()),names=subjects(events);assert.ok(events.length>0,'Scegliere una settimana con eventi tramite TEST_WEEK');assert.ok(names.length>0);assert.equal(new Set(names).size,names.length);
+console.log(JSON.stringify({checkedAt:new Date().toISOString(),origin,week:day,preflight:preflight.status,status:response.status,allowOrigin:response.headers.get('access-control-allow-origin'),events:events.length,uniqueSubjects:names.length,subjects:names,first:{subject:events[0].subject,start:time(events[0].start),end:time(events[0].end)}},null,2));
