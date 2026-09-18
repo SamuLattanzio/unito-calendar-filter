@@ -37,3 +37,5 @@
 @media(max-width:600px){.week-grid{grid-template-columns:48px repeat(5,154px);min-width:818px}.calendar-scroll{max-height:75vh;scroll-padding-left:48px}.lesson{padding:7px 6px}.lesson-name{font-size:12px}}
 
 .lesson.compact{padding:4px 6px;gap:1px}.lesson.compact .lesson-name{-webkit-line-clamp:1}.lesson.compact .lesson-teacher{display:none}
+
+.sync-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:8px}.sync-actions{display:flex;flex-wrap:wrap;gap:8px}.sync-panel button{font-size:12px}.sync-panel input{display:block;width:100%;min-width:0;margin:8px 0;padding:10px;border:1px solid var(--line);border-radius:8px}.sync-panel form{margin-bottom:12px}.sync-disconnect{margin-top:8px;border:0;color:var(--wine);padding-left:0}.sync-panel button:disabled{cursor:default;opacity:.5}#sync-message:empty,#sync-time:empty{display:none}

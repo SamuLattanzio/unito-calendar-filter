@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 24
       - run: npm test
-      - run: mkdir -p dist && cp index.html app.js calendar.js style.css favicon.svg dist/
+      - run: mkdir -p dist && cp index.html app.js calendar.js preferences.js sync.js sync-ui.js sync-config.js style.css favicon.svg dist/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

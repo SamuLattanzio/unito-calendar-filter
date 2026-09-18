@@ -1,1 +1,1 @@
-{"name":"unito-calendar","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test tests/*.test.mjs","test:live":"node tests/live.mjs"},"engines":{"node":">=20"}}
+{"name":"unito-calendar","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test tests/*.test.mjs","test:live":"node tests/live.mjs"},"engines":{"node":">=20"},"devDependencies":{"wrangler":"4.135.0"}}

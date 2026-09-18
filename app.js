@@ -1,3 +1,4 @@
+import {setupSync} from './sync-ui.js';
 import {SOURCE,STORAGE_KEY,romeDay,monday,shiftDay,fetchEvents,subjects,filterEvents,readSelection,time,dayLabel} from './calendar.js';
 
 export const HOUR_HEIGHT = 52;
@@ -122,7 +123,8 @@ let week=monday(romeDay()),events=[],selected=null,controller,requestId=0,lastSu
 try {selected=readSelection(localStorage);} catch {}
 $('source').href=SOURCE;
 function el(tag,text,className) {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
-function save() {try {localStorage.setItem(STORAGE_KEY,JSON.stringify(selected));} catch {$('storage-note').textContent='Il browser non consente di salvare la selezione. Resterà attiva in questa pagina.';}}
+let sync;
+function save() {try {localStorage.setItem(STORAGE_KEY,JSON.stringify(selected));} catch {$('storage-note').textContent='Il browser non consente di salvare la selezione. Resterà attiva in questa pagina.';}sync?.changed();}
 function renderFilters() {
   const names=[...new Set([...subjects(events),...(selected||[])])].sort((a,b)=>a.localeCompare(b,'it'));
   $('subject-count').textContent=names.length;
@@ -154,4 +156,5 @@ $('prev').onclick=()=>go(shiftDay(week,-7));$('next').onclick=()=>go(shiftDay(we
 $('search').oninput=renderFilters;$('all').onclick=()=>{selected=null;save();render();};$('none').onclick=()=>{selected=[];save();render();};
 setInterval(()=>{if(!document.hidden)load();},300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastSuccess>60000)load();});
 render();load();
+sync=setupSync({getSelection:()=>selected,applySelection:value=>{selected=value;save();render();}});
 }

@@ -1,0 +1,11 @@
+{
+  "name": "unito-calendar-sync-local",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-18",
+  "vars": {"ALLOWED_ORIGINS": "http://127.0.0.1:4173,http://localhost:4173"},
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "unito-calendar-preferences",
+    "migrations_dir": "migrations"
+  }]
+}
