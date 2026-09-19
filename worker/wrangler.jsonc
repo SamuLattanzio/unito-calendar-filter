@@ -4,11 +4,16 @@
   "main": "src/index.js",
   "compatibility_date": "2026-09-18",
   "workers_dev": true,
-  "vars": {"ALLOWED_ORIGINS": "https://samulattanzio.github.io"},
-  "d1_databases": [{
-    "binding": "DB",
-    "database_name": "unito-calendar-preferences",
-    // Add database_id returned by `wrangler d1 create` before remote deployment.
-    "migrations_dir": "migrations"
-  }]
+  "vars": {
+    "ALLOWED_ORIGINS": "https://samulattanzio.github.io"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "unito-calendar-preferences",
+      // Add database_id returned by `wrangler d1 create` before remote deployment.
+      "database_id": "90736b8d-fd4f-4637-8f1b-001282897e38",
+      "migrations_dir": "migrations"
+    }
+  ]
 }
