@@ -86,7 +86,12 @@ export function renderWeek(container,events,shown,week) {
   grid.append(el('div','Orario','calendar-corner'));
   for(const {day} of layout.days) {
     const heading=el('div',undefined,'calendar-heading'+(day===romeDay()?' is-today':''));
-    heading.append(el('strong',dayLabel(day,{weekday:'long'})),el('span',dayLabel(day)));
+    heading.append(
+      el('strong',dayLabel(day,{weekday:'long'}),'heading-full'),
+      el('span',dayLabel(day),'heading-full'),
+      el('strong',dayLabel(day,{weekday:'short'}),'heading-mobile'),
+      el('span',dayLabel(day,{day:'numeric',month:'numeric'}),'heading-mobile')
+    );
     if(day===romeDay())heading.append(el('small','Oggi'));
     grid.append(heading);
   }

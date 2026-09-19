@@ -34,8 +34,28 @@
 .lesson-details p{font-size:14px;overflow-wrap:anywhere}
 @media(min-width:1200px){.lesson-teacher{display:block}.layout{grid-template-columns:250px minmax(0,1fr);gap:28px}}
 @media(min-width:601px) and (max-width:1100px){.layout{grid-template-columns:1fr;gap:24px}#subjects{max-height:180px;overflow:auto}.toolbar{flex-direction:row;align-items:center}}
-@media(max-width:600px){.week-grid{grid-template-columns:48px repeat(5,154px);min-width:818px}.calendar-scroll{max-height:75vh;scroll-padding-left:48px}.lesson{padding:7px 6px}.lesson-name{font-size:12px}}
+.heading-mobile{display:none}
 
 .lesson.compact{padding:4px 6px;gap:1px}.lesson.compact .lesson-name{-webkit-line-clamp:1}.lesson.compact .lesson-teacher{display:none}
+
+/* Fit the entire working week on phones; tablet/desktop keep their canvas. */
+@media(max-width:600px){
+  .calendar-scroll{width:100%;max-width:100%;max-height:75vh;overflow-x:hidden;scroll-padding:58px 0 0 30px}
+  .week-grid{width:100%;min-width:0;grid-template-columns:30px repeat(5,minmax(0,1fr))}
+  .calendar-corner,.calendar-heading{min-width:0;min-height:58px;padding:8px 2px}
+  .calendar-corner{font-size:8px;padding-top:12px}
+  .calendar-heading{gap:3px;align-items:center;overflow:hidden}
+  .calendar-heading .heading-full{display:none}
+  .calendar-heading .heading-mobile{display:block;font-size:10px;white-space:nowrap}
+  .calendar-heading small{font-size:8px}
+  .time-tick{right:2px;font-size:8px}
+  .lesson,.lesson.compact{min-width:0;padding:2px 1px;gap:1px;border-left-width:2px;border-radius:3px;font-size:8px}
+  .lesson>*{min-width:0;max-width:100%;overflow:hidden}
+  .lesson-name{font-size:9px;line-height:1.2;-webkit-line-clamp:3}
+  .lesson-time,.lesson-room{font-size:8px;white-space:nowrap;text-overflow:ellipsis}
+  .lesson-teacher{display:none}
+  .all-day-label{min-width:0;padding:5px 1px;font-size:8px;overflow-wrap:anywhere}
+  .all-day-cell{min-width:0;padding:2px 1px}
+}
 
 .sync-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:8px}.sync-actions{display:flex;flex-wrap:wrap;gap:8px}.sync-panel button{font-size:12px}.sync-panel input{display:block;width:100%;min-width:0;margin:8px 0;padding:10px;border:1px solid var(--line);border-radius:8px}.sync-panel form{margin-bottom:12px}.sync-disconnect{margin-top:8px;border:0;color:var(--wine);padding-left:0}.sync-panel button:disabled{cursor:default;opacity:.5}#sync-message:empty,#sync-time:empty{display:none}
