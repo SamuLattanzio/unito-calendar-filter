@@ -36,6 +36,27 @@
 @media(min-width:601px) and (max-width:1100px){.layout{grid-template-columns:1fr;gap:24px}#subjects{max-height:180px;overflow:auto}.toolbar{flex-direction:row;align-items:center}}
 .heading-mobile{display:none}
 
+/* Calendar first in both reading order and visual order. */
+.layout{grid-template-columns:minmax(0,1fr);gap:24px}
+.subjects-panel{width:100%;padding:0}
+.subjects-toggle{display:flex;align-items:center;gap:12px;width:100%;border:0;border-radius:14px;padding:16px 18px;text-align:left;font-size:18px;font-weight:600}
+.subjects-toggle .pill{margin-left:auto}
+.subjects-chevron{font-size:22px;line-height:1;transform:rotate(-90deg)}
+.subjects-toggle[aria-expanded=true] .subjects-chevron{transform:rotate(0)}
+#subjects-content{padding:0 18px 18px}
+@media(max-width:600px){
+  .intro{padding:14px 0 16px}
+  .intro .eyebrow{font-size:9px;margin:0 0 6px}
+  .intro h1{font-size:25px;margin:6px 0}
+  .intro>p:last-child{font-size:12px;line-height:1.4;margin:6px 0 0}
+  .toolbar{gap:8px}
+  .toolbar .eyebrow{margin:0 0 6px}
+  .toolbar h2{font-size:20px}
+  .sub-toolbar{margin:12px 0 6px}
+  .status-row{padding:8px 0 12px}
+  .subjects-toggle{font-size:17px;padding:12px 14px}
+}
+
 .lesson.compact{padding:4px 6px;gap:1px}.lesson.compact .lesson-name{-webkit-line-clamp:1}.lesson.compact .lesson-teacher{display:none}
 
 /* Fit the entire working week on phones; tablet/desktop keep their canvas. */

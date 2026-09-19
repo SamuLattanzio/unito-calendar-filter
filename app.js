@@ -124,6 +124,13 @@ export function renderWeek(container,events,shown,week) {
 // Browser entry point; the layout helpers above can also be tested in Node.
 if (typeof document !== 'undefined') {
 const $=id=>document.getElementById(id);
+const subjectsToggle=$('subjects-toggle'), subjectsContent=$('subjects-content');
+function setSubjectsOpen(open) {
+  subjectsToggle.setAttribute('aria-expanded',String(open));
+  subjectsContent.hidden=!open;
+}
+setSubjectsOpen(!window.matchMedia('(max-width:600px)').matches);
+subjectsToggle.addEventListener('click',()=>setSubjectsOpen(subjectsToggle.getAttribute('aria-expanded')!=='true'));
 let week=monday(romeDay()),events=[],selected=null,controller,requestId=0,lastSuccess=0;
 try {selected=readSelection(localStorage);} catch {}
 $('source').href=SOURCE;
