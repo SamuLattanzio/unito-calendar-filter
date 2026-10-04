@@ -1,5 +1,5 @@
 import {setupSync} from './sync-ui.js';
-import {SOURCE,STORAGE_KEY,romeDay,monday,shiftDay,fetchEvents,subjects,filterEvents,readSelection,time,dayLabel} from './calendar.js';
+import {SOURCE,STORAGE_KEY,romeDay,openingWeek,shiftDay,fetchEvents,subjects,filterEvents,readSelection,time,dayLabel} from './calendar.js';
 
 export const HOUR_HEIGHT = 52;
 const minutes = iso => { const [h,m] = time(iso).split(':').map(Number); return h*60+m; };
@@ -131,7 +131,7 @@ function setSubjectsOpen(open) {
 }
 setSubjectsOpen(!window.matchMedia('(max-width:600px)').matches);
 subjectsToggle.addEventListener('click',()=>setSubjectsOpen(subjectsToggle.getAttribute('aria-expanded')!=='true'));
-let week=monday(romeDay()),events=[],selected=null,controller,requestId=0,lastSuccess=0;
+let week=openingWeek(romeDay()),events=[],selected=null,controller,requestId=0,lastSuccess=0;
 try {selected=readSelection(localStorage);} catch {}
 $('source').href=SOURCE;
 function el(tag,text,className) {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}

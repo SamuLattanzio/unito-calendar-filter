@@ -12,6 +12,11 @@ export function shiftDay(day, n) {
 export function monday(day) {
   return shiftDay(day, -((new Date(day+'T12:00:00Z').getUTCDay()+6)%7));
 }
+export function openingWeek(day) {
+  const weekday = new Date(day+'T12:00:00Z').getUTCDay();
+  return monday(dayIsWeekend(weekday) ? shiftDay(day, 7) : day);
+}
+function dayIsWeekend(weekday) { return weekday === 0 || weekday === 6; }
 export function romeMidnight(day) {
   const noon = new Date(day+'T12:00:00Z');
   const hour = Number(new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',hourCycle:'h23'}).format(noon));
