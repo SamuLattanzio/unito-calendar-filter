@@ -80,3 +80,16 @@
 }
 
 .sync-panel{border-top:1px solid var(--line);margin-top:18px;padding-top:8px}.sync-actions{display:flex;flex-wrap:wrap;gap:8px}.sync-panel button{font-size:12px}.sync-panel input{display:block;width:100%;min-width:0;margin:8px 0;padding:10px;border:1px solid var(--line);border-radius:8px}.sync-panel form{margin-bottom:12px}.sync-disconnect{margin-top:8px;border:0;color:var(--wine);padding-left:0}.sync-panel button:disabled{cursor:default;opacity:.5}#sync-message:empty,#sync-time:empty{display:none}
+\n+.header-actions{display:flex;align-items:center;gap:16px}.header-actions button{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;min-height:36px;font-size:12px}
+:root[data-theme=dark]{color-scheme:dark;--text:#eeeae7;--surface:#242326;--surface-muted:#171619;--line:#454147;--text-muted:#aaa3a0;--grid:#2b292d;--wine:#d77b98}
+:root[data-theme=dark] body{color:var(--text);background:var(--surface-muted)}
+:root[data-theme=dark] header,:root[data-theme=dark] aside,:root[data-theme=dark] button,:root[data-theme=dark] .calendar-scroll,:root[data-theme=dark] .lesson-details{background:var(--surface);color:var(--text)}
+:root[data-theme=dark] .brand{color:var(--text)}
+:root[data-theme=dark] input,:root[data-theme=dark] input[type=date]{background:#302e33;color:var(--text);border-color:var(--line)}
+:root[data-theme=dark] .calendar-corner,:root[data-theme=dark] .calendar-heading,:root[data-theme=dark] .time-axis,:root[data-theme=dark] .time-tick,:root[data-theme=dark] .all-day-label{background:var(--grid)}
+:root[data-theme=dark] .calendar-day{background:repeating-linear-gradient(to bottom,var(--line) 0,var(--line) 1px,transparent 1px,transparent var(--hour-height))}
+:root[data-theme=dark] .calendar-day.is-today{background-color:#31272c}
+:root[data-theme=dark] .calendar-heading.is-today{background:#3b2930}
+:root[data-theme=dark] .intro>p:last-child,:root[data-theme=dark] .hint,:root[data-theme=dark] .status-row,:root[data-theme=dark] footer,:root[data-theme=dark] .calendar-heading span,:root[data-theme=dark] .time-tick{color:var(--text-muted)}
+:root[data-theme=dark] .lesson{box-shadow:0 1px 2px #0006}
+@media(max-width:600px){.header-actions{gap:8px}.header-actions button{padding:6px 8px}.header-actions button span:last-child{display:none}}

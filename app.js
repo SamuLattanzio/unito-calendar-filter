@@ -125,6 +125,17 @@ export function renderWeek(container,events,shown,week) {
 if (typeof document !== 'undefined') {
 const $=id=>document.getElementById(id);
 const subjectsToggle=$('subjects-toggle'), subjectsContent=$('subjects-content');
+const themeToggle=$('theme-toggle'), themeLabel=$('theme-label');
+function setDarkMode(dark) {
+  document.documentElement.dataset.theme=dark?'dark':'light';
+  themeToggle.setAttribute('aria-pressed',String(dark));
+  themeToggle.setAttribute('aria-label',dark?'Attiva modalità chiara':'Attiva modalità scura');
+  themeLabel.textContent=dark?'Modalità chiara':'Modalità scura';
+}
+let darkMode=false;
+try { darkMode=localStorage.getItem('unito-calendar-theme')==='dark'; } catch {}
+setDarkMode(darkMode);
+themeToggle.addEventListener('click',()=>{darkMode=!darkMode;setDarkMode(darkMode);try {localStorage.setItem('unito-calendar-theme',darkMode?'dark':'light');} catch {}});
 function setSubjectsOpen(open) {
   subjectsToggle.setAttribute('aria-expanded',String(open));
   subjectsContent.hidden=!open;
